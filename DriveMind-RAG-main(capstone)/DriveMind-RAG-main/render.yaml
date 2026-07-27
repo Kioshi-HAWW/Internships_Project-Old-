@@ -1,0 +1,20 @@
+services:
+  - type: web
+    name: rag-assistant
+    env: docker
+    plan: free
+    dockerfilePath: Dockerfile
+    port: 10000
+    envVars:
+      - key: GOOGLE_SERVICE_ACCOUNT_B64
+        sync: false
+      - key: QDRANT_API_KEY
+        sync: false
+      - key: QDRANT_URL
+        sync: false
+      - key: GEMINI_API_KEY
+        sync: false
+      - key: GOOGLE_DRIVE_FOLDER_ID
+        sync: false
+    healthCheckPath: /health
+    autoDeploy: true
