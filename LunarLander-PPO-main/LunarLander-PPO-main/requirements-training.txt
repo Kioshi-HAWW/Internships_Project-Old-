@@ -1,0 +1,8 @@
+# These packages are needed to TRAIN the AI on your own computer.
+# You do NOT need these on Render. Render uses the smaller requirements.txt file instead.
+
+gymnasium[box2d]==0.29.1
+stable-baselines3==2.3.2
+torch==2.3.1
+numpy==1.26.4
+matplotlib==3.8.4

@@ -1,0 +1,7 @@
+# These are the ONLY packages Render needs to install.
+# We keep this list small on purpose so the website builds fast and never fails.
+# (We do NOT need gymnasium, torch, or stable-baselines3 here because the
+# website just SHOWS results that were already saved by train.py.)
+
+Flask==3.0.3
+gunicorn==22.0.0

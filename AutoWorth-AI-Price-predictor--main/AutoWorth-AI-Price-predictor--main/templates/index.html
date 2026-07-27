@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Car Price Prediction System</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>🚗 Car Price Prediction System</h1>
+
+    <p class="subtitle">
+        Predict the resale price of your used car using Machine Learning
+    </p>
+
+    <form action="/predict" method="POST">
+
+        <!-- Brand -->
+
+        <label>Brand</label>
+
+        <select name="brand" required>
+
+            {% for brand in brands %}
+            <option value="{{ brand }}">{{ brand }}</option>
+            {% endfor %}
+
+        </select>
+
+
+        <!-- Location -->
+
+        <label>Location</label>
+
+        <select name="location" required>
+
+            {% for location in locations %}
+            <option value="{{ location }}">{{ location }}</option>
+            {% endfor %}
+
+        </select>
+
+
+        <!-- Fuel -->
+
+        <label>Fuel Type</label>
+
+        <select name="fuel" required>
+
+            {% for fuel in fuel_types %}
+            <option value="{{ fuel }}">{{ fuel }}</option>
+            {% endfor %}
+
+        </select>
+
+
+        <!-- Transmission -->
+
+        <label>Transmission</label>
+
+        <select name="transmission" required>
+
+            {% for transmission in transmissions %}
+            <option value="{{ transmission }}">{{ transmission }}</option>
+            {% endfor %}
+
+        </select>
+
+
+        <!-- Owner -->
+
+        <label>Owner Type</label>
+
+        <select name="owner" required>
+
+            {% for owner in owner_types %}
+            <option value="{{ owner }}">{{ owner }}</option>
+            {% endfor %}
+
+        </select>
+
+
+        <!-- Year -->
+
+        <label>Manufacturing Year</label>
+
+        <input
+            type="number"
+            name="year"
+            placeholder="Enter Year"
+            min="1998"
+            max="2026"
+            required>
+
+
+        <!-- Kilometers -->
+
+        <label>Kilometers Driven</label>
+
+        <input
+            type="number"
+            name="kms"
+            placeholder="Kilometers Driven"
+            required>
+
+
+        <!-- Mileage -->
+
+        <label>Mileage (kmpl)</label>
+
+        <input
+            type="number"
+            step="0.01"
+            name="mileage"
+            placeholder="Mileage"
+            required>
+
+
+        <!-- Engine -->
+
+        <label>Engine (CC)</label>
+
+        <input
+            type="number"
+            name="engine"
+            placeholder="Engine Capacity"
+            required>
+
+
+        <!-- Power -->
+
+        <label>Power (BHP)</label>
+
+        <input
+            type="number"
+            step="0.01"
+            name="power"
+            placeholder="Power"
+            required>
+
+
+        <!-- Seats -->
+
+        <label>Seats</label>
+
+        <input
+            type="number"
+            name="seats"
+            placeholder="Number of Seats"
+            required>
+
+
+        <button type="submit">
+
+            Predict Price
+
+        </button>
+
+    </form>
+
+
+    {% if prediction %}
+
+    <div class="result">
+
+        <h2>
+
+            Estimated Price
+
+        </h2>
+
+        <h1>
+
+            ₹ {{ prediction }} Lakhs
+
+        </h1>
+
+    </div>
+
+    {% endif %}
+
+
+    {% if error %}
+
+    <div class="error">
+
+        {{ error }}
+
+    </div>
+
+    {% endif %}
+
+</div>
+
+</body>
+
+</html>

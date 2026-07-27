@@ -1,0 +1,11 @@
+{
+    "mean_reward": 236.64,
+    "std_reward": 60.07,
+    "training_steps": 1050000,
+    "eval_episodes": 30,
+    "environment": "LunarLander-v3",
+    "algorithm": "PPO",
+    "solved": true,
+    "solved_threshold": 200,
+    "note": "This model was trained for 1,050,000 steps and evaluated over 30 test games. An average score of 200+ is generally considered a solved landing."
+}

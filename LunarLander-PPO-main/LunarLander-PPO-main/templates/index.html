@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Lunar Lander PPO Project</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #0d1b2a;
+            color: #e0e1dd;
+            margin: 0;
+            padding: 40px 20px;
+            text-align: center;
+        }
+        h1 {
+            color: #ffffff;
+        }
+        .card {
+            background-color: #1b263b;
+            border-radius: 12px;
+            padding: 25px;
+            max-width: 600px;
+            margin: 25px auto;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.4);
+        }
+        .stat {
+            font-size: 20px;
+            margin: 10px 0;
+        }
+        .stat span {
+            font-weight: bold;
+            color: #48cae4;
+        }
+        img {
+            max-width: 100%;
+            border-radius: 10px;
+            margin-top: 15px;
+        }
+        footer {
+            margin-top: 40px;
+            font-size: 14px;
+            color: #8d99ae;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>🚀 Lunar Lander AI (Reinforcement Learning)</h1>
+    <p>This AI was trained using the PPO algorithm to safely land a spaceship, using the Gymnasium LunarLander environment.</p>
+
+    <div class="card">
+        <h2>Training Results</h2>
+        <p class="stat">Algorithm used: <span>{{ results.algorithm }}</span></p>
+        <p class="stat">Game environment: <span>{{ results.environment }}</span></p>
+        <p class="stat">Training steps: <span>{{ results.training_steps }}</span></p>
+        <p class="stat">Number of test games: <span>{{ results.eval_episodes }}</span></p>
+        <p class="stat">Average score: <span>{{ results.mean_reward }}</span></p>
+        <p class="stat">Score variation: <span>{{ results.std_reward }}</span></p>
+        <p style="font-size:14px; color:#8d99ae;">
+            (A score above 200 usually means the spaceship landed safely and smoothly.)
+        </p>
+    </div>
+
+    {% if results.solved %}
+    <div class="card" style="border: 2px solid #2ecc71;">
+        <h2 style="color:#2ecc71;">✅ Solved!</h2>
+        <p>An average score above 200 means the AI lands the spaceship safely and smoothly, most of the time.</p>
+    </div>
+    {% endif %}
+
+    {% if video_exists %}
+    <div class="card">
+        <h2>Watch the AI Land</h2>
+        <video width="100%" controls style="border-radius:10px;">
+            <source src="{{ url_for('static', filename='landing_video.mp4') }}" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+    </div>
+    {% endif %}
+
+    {% if graph_exists %}
+    <div class="card">
+        <h2>Training Progress Graph</h2>
+        <img src="{{ url_for('static', filename='training_reward_graph.png') }}" alt="Training reward graph">
+    </div>
+    {% endif %}
+
+    <footer>
+        Built with Gymnasium, Stable-Baselines3 (PPO), and Flask.
+    </footer>
+
+</body>
+</html>
