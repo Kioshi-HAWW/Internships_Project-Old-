@@ -36,4 +36,4 @@ This project predicts whether an individual's annual income exceeds $50,000 usin
 - Scikit-Learn
 
 ## Author
-Prathmesh Chedge
+Udit  Narayan Rout
