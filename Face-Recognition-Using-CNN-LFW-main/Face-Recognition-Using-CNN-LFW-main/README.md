@@ -237,5 +237,5 @@ Performance depends on the selected classes, preprocessing, hyperparameters, and
 
 ## 👨‍💻 Author
 
-**Prathmesh Chedge**
+**Udit Narayan Rout**
 
